@@ -3,6 +3,7 @@
   Pinned: <%= discussion.pinned %> | Closed: <%= discussion.closed %>
 
   <div class="mt-4">
-    <%= link_to "Edit", edit_discussion_path(discussion), class: "py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300" %>
+    <%= link_to "Edit", edit_discussion_path(discussion), class: "py-1 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300" %>
+    <%= link_to "Delete", discussion_path(discussion), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "py-1 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300" %>
   </div>
 </div>
