@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   # Validates
   validates :username, presence: true, uniqueness: true
+
+  # Associations
+  has_many :discussions, dependent: :destroy
 end
