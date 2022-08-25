@@ -20,6 +20,14 @@
     <%= f.label :closed, class: "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
   </div>
 
+  <% if discussion.new_record? %>
+    <%= f.fields_for :posts do |p| %>
+      <div class="mb-4">
+        <%= p.rich_text_area :body, placeholder: "Kickoff the discussion" %>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="mb-4">
     <%= f.submit class: "py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300" %>
   </div>

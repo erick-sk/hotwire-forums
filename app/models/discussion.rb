@@ -7,6 +7,8 @@ class Discussion < ApplicationRecord
   # Associations
   has_many :posts, dependent: :destroy
 
+  accepts_nested_attributes_for :posts
+
   # turbo_stream
   after_create_commit -> { broadcast_prepend_to "discussions"}
   after_update_commit -> { broadcast_replace_to "discussions"}
