@@ -1,0 +1,19 @@
+<%= turbo_frame_tag dom_id(discussion) do %>
+  <div class="flex justify-between items-center">
+    <div>
+      <h1 class="text-4xl"><%= discussion.name %></h1>
+      <% if discussion.pinned %>
+        <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">Pinned</span>
+      <% end %>
+
+      <% if discussion.closed %>
+        <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-800">Closed</span>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to "Edit", edit_discussion_path(discussion), class: "py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300" %>
+      <%= link_to "Destroy", discussion_path(discussion), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300" %>
+    </div>
+  </div>
+<% end %>

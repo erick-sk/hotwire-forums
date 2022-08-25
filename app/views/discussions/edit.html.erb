@@ -1,1 +1,5 @@
-<%= render partial: "form", locals: { discussion: @discussion } %>
+<h1 class="text-4xl mb-4">Edit discussion</h1>
+<%= turbo_frame_tag dom_id(@discussion) do %>
+  <%= render partial: "form", locals: { discussion: @discussion } %>
+  <%= link_to "Cancel", @discussion, class: "underline text-blue-600" %>
+<% end %>
