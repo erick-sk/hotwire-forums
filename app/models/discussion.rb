@@ -3,4 +3,9 @@ class Discussion < ApplicationRecord
 
   # Validates
   validates :name, presence: true
+
+  # friendly url
+  def to_param
+    "#{id}-#{name.downcase.to_s[0...100]}".parameterize
+  end
 end
