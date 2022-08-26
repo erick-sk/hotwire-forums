@@ -2,11 +2,9 @@
   <div class="container mx-auto px-2">
     <div class="flex justify-between">
       <div class="flex space-x-7">
-        <div>
+        <div class="flex items-center py-4 px-2">
           <!-- Website Logo -->
-          <a href="/" class="flex items-center py-4 px-2">
-            <span class="font-semibold text-gray-500 text-lg">Hotwire Forums</span>
-          </a>
+          <%= link_to "Hotwire Forums", root_path, class: "font-semibold text-gray-500 text-lg" %>
         </div>
         <!-- Primary Navbar items -->
         <div class="hidden md:flex items-center space-x-1">
@@ -44,16 +42,16 @@
   <!-- mobile menu -->
   <div class="hidden mobile-menu">
     <ul class="">
-      <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-blue-500 font-semibold">Home</a></li>
+      <li class="active"><%= link_to "Home", root_path, class: "block text-sm px-2 py-4 text-white bg-blue-500 font-semibold" %></li>
     </ul>
   </div>
 </nav>
 
 <script>
-  const btn = document.querySelector("button.mobile-menu-button");
-  const menu = document.querySelector(".mobile-menu");
+  var button = document.querySelector("button.mobile-menu-button");
+  var menu = document.querySelector(".mobile-menu");
 
-  btn.addEventListener("click", () => {
+  button.addEventListener("click", () => {
       menu.classList.toggle("hidden");
   });
 </script>
