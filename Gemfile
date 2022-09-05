@@ -15,6 +15,9 @@ gem "pg", "~> 1.1"
 # Devise
 gem "devise", "~> 4.8"
 
+# Pagy
+gem "pagy", "~> 5.10"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
