@@ -3,9 +3,20 @@
     <%= render partial: "discussions/posts/header", locals: { post: post } %>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= post.body %></p>
 
-    <div class="mt-2">
-      <%= link_to "Edit", edit_discussion_post_path(post.discussion, post), data: { turbo_frame: dom_id(post) }, class: "underline text-blue-700 mr-2" %>
-      <%= link_to "Delete", discussion_post_path(post.discussion, post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "underline text-blue-700" %>
-    </div>
+    <% if action_name.nil? %>
+      <%# lazy laod controls because it's being broadcasted %>
+      <%= turbo_frame_tag "post_actions", src: discussion_post_path(post.discussion, post) do %>
+        <p>Loading...</p>
+      <% end %>
+    <% else %>
+      <%= turbo_frame_tag "post_actions" do %>
+        <% if Current.user == post.user || Current.user.admin? %>
+          <div class="mt-2">
+            <%= link_to "Edit", edit_discussion_post_path(post.discussion, post), data: { turbo_frame: dom_id(post) }, class: "underline text-blue-700 mr-2" %>
+            <%= link_to "Delete", discussion_post_path(post.discussion, post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "underline text-blue-700" %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
