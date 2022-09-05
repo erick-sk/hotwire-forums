@@ -11,6 +11,8 @@ class Discussion < ApplicationRecord
 
   accepts_nested_attributes_for :posts
 
+  # scope
+  scope :pinned_first, -> { order(pinned: :desc, updated_at: :desc) }
 
   # turbo_stream
   broadcasts_to :category, inserts_by: :prepend
