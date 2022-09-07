@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   # Associations
   belongs_to :discussion, counter_cache: true, touch: true
   belongs_to :user, default: -> { Current.user }
+  has_noticed_notifications
 
   # Action text
   has_rich_text :body
